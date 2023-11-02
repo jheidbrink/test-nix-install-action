@@ -1,0 +1,11 @@
+name: Test nix-install action
+on:
+  workflow_dispatch: []
+
+jobs:
+  test-nix-install-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cachix/install-nix-action@v22
+      - name: Verify Nix installation
+        run: nix-shell -p nix-info --run "nix-info -m"
